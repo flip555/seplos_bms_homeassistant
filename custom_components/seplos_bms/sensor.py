@@ -56,7 +56,7 @@ async def async_setup_entry(hass, entry, async_add_entities):
         SeplosBMSSensor("Seplos BMS - Total Capacity", get_data, "Capacity", "Ah"),
         SeplosBMSSensor("Seplos BMS - Number of Cycles", get_data, "Cycles"),
         SeplosBMSSensor("Seplos BMS - State of Health (SOH)", get_data, "SOH", "%"),
-        SeplosBMSSensor("Seplos BMS - Port Voltage", get_data, "PortV", "V")
+        SeplosBMSSensor("Seplos BMS - Port Voltage", get_data, "PortV", "V"),
         SeplosBMSSensor("Seplos BMS - Temperature 1", get_data, "Temp1", "°C"),
         SeplosBMSSensor("Seplos BMS - Temperature 2", get_data, "Temp2", "°C"),
         SeplosBMSSensor("Seplos BMS - Temperature 3", get_data, "Temp3", "°C"),
