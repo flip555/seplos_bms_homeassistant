@@ -1,0 +1,7 @@
+{
+    "name": "Seplos BMS",
+    "domains": ["sensor"],
+    "documentation": "https://github.com/flip555/seplos_bms_homeassistant/blob/main/README.md",
+    "issue_tracker": "https://github.com/flip555/seplos_bms_homeassistant/issues",
+    "config_flow": true
+}
