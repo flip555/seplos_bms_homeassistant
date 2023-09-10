@@ -23,6 +23,7 @@ class BMSDataCoordinator:
 
 class SeplosHelper:
     COMMAND = "~20004642E00201FD36\r"
+#2000464FE00200FD23
 
     @staticmethod
     def twos_complement(value, bits=16):
