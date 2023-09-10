@@ -5,7 +5,9 @@ from homeassistant.helpers.entity import Entity
 from .seplos_helper import SeplosHelper
 from .const import DOMAIN
 from .seplos_helper import BMSDataCoordinator
+from datetime import timedelta
 
+SCAN_INTERVAL = timedelta(seconds=2)
 _LOGGER = logging.getLogger(__name__)
 
 
@@ -35,7 +37,6 @@ class SeplosBMSSensor(Entity):
         data = self._latest_data
         if isinstance(data, str):
             data = json.loads(data)
-        _LOGGER.debug("Dat: %s", data)
         for attr_part in self._attr.split('.'):
             if isinstance(data, dict) and attr_part in data:
                 data = data[attr_part]

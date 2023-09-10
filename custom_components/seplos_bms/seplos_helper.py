@@ -16,8 +16,7 @@ class BMSDataCoordinator:
 
     async def fetch_data(self, hass):
         async with BMSDataCoordinator._lock:  # Prevent simultaneous fetches
-            if self.last_fetch is None or time.time() - self.last_fetch > 10:  # Fetch every 10 seconds
-                _LOGGER.debug("FETCH_DATA TRIGGERED")
+            if self.last_fetch is None or time.time() - self.last_fetch > 1:  # Fetch every 10 seconds
                 self.data = await hass.async_add_executor_job(SeplosHelper.fetch_data_from_bms, self.usb_port)
                 self.last_fetch = time.time()
 
@@ -47,7 +46,6 @@ class SeplosHelper:
             data = {}
             offset = 19
             with serial.Serial(usb_port, 19200, timeout=1) as ser:
-                _LOGGER.debug("Writing to Serial from: %s", SeplosHelper.COMMAND)
                 ser.write(SeplosHelper.COMMAND.encode())
                 try:
                     ser.timeout = 5
@@ -57,7 +55,6 @@ class SeplosHelper:
                     _LOGGER.error(f"Error reading from serial port: {e}")
                     return None
 
-                _LOGGER.debug("Response from: %s", response)
 
             rdata = response
             if rdata[7:9] != "00":
@@ -113,7 +110,6 @@ class SeplosHelper:
             data['SOH'], offset = SeplosHelper.get_div(rdata, offset, 10, 1)
             data['PortV'], offset = SeplosHelper.get_div(rdata, offset, 100, 2)
 
-            _LOGGER.debug("Raw data helper %s", data)
 
             return json.dumps(data)
 
