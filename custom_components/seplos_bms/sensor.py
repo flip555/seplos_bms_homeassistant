@@ -51,9 +51,9 @@ async def async_setup_entry(hass, entry, async_add_entities):
 
     sensors = [
         SeplosBMSSensor("SeplosBMS - Number of Cells", data_coordinator, "NoCells"),
-        SeplosBMSSensor("SeplosBMS - Highest Cell Value", data_coordinator, "HighestCell", "V"),
-        SeplosBMSSensor("SeplosBMS - Lowest Cell Value", data_coordinator, "LowestCell", "V"),
-        SeplosBMSSensor("SeplosBMS - Cell Difference", data_coordinator, "CellDifference", "V"),
+        SeplosBMSSensor("SeplosBMS - Highest Cell Value", data_coordinator, "HighestCell", "mV"),
+        SeplosBMSSensor("SeplosBMS - Lowest Cell Value", data_coordinator, "LowestCell", "mV"),
+        SeplosBMSSensor("SeplosBMS - Cell Difference", data_coordinator, "CellDifference", "mV"),
         SeplosBMSSensor("SeplosBMS - Environment Temperature", data_coordinator, "EnvTemp", "°C"),
         SeplosBMSSensor("SeplosBMS - Power Temperature", data_coordinator, "PowerTemp", "°C"),
         SeplosBMSSensor("SeplosBMS - Current", data_coordinator, "Current", "A"),
@@ -73,6 +73,6 @@ async def async_setup_entry(hass, entry, async_add_entities):
 
     # Dynamically add cell sensors
     for i in range(1, 17):  # 16 cells
-        sensors.append(SeplosBMSSensor(f"SeplosBMS - Cell {i} Voltage", data_coordinator, f"C{i}", "V"))
+        sensors.append(SeplosBMSSensor(f"SeplosBMS - Cell {i} Voltage", data_coordinator, f"C{i}", "mV"))
 
     async_add_entities(sensors, True)
