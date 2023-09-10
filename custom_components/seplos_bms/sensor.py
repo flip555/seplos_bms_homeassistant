@@ -7,7 +7,7 @@ from .const import DOMAIN
 from .seplos_helper import BMSDataCoordinator
 from datetime import timedelta
 
-SCAN_INTERVAL = timedelta(seconds=5)
+SCAN_INTERVAL = timedelta(seconds=10)
 
 _LOGGER = logging.getLogger(__name__)
 

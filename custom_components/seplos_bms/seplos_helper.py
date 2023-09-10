@@ -16,7 +16,7 @@ class BMSDataCoordinator:
 
     async def fetch_data(self, hass):
         async with BMSDataCoordinator._lock:  # Prevent simultaneous fetches
-            if self.last_fetch is None or time.time() - self.last_fetch > 5:  # Fetch every 10 seconds
+            if self.last_fetch is None or time.time() - self.last_fetch > 1:  # Fetch every 1 second
                 self.data = await hass.async_add_executor_job(SeplosHelper.fetch_data_from_bms, self.usb_port)
                 self.last_fetch = time.time()
 
@@ -60,7 +60,7 @@ class SeplosHelper:
             if rdata[7:9] != "00":
                 print(f"Error code {rdata[7:9]}. Retrying...")
                 retries += 1
-                time.sleep(0.5)
+                time.sleep(0.1)
                 continue
 
             # Extract NCELL and related data
