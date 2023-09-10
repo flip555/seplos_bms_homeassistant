@@ -50,29 +50,29 @@ async def async_setup_entry(hass, entry, async_add_entities):
     data_coordinator = BMSDataCoordinator(usb_port)
 
     sensors = [
-        SeplosBMSSensor("Seplos BMS - Number of Cells", data_coordinator, "NoCells"),
-        SeplosBMSSensor("Seplos BMS - Highest Cell Value", data_coordinator, "HighestCell", "V"),
-        SeplosBMSSensor("Seplos BMS - Lowest Cell Value", data_coordinator, "LowestCell", "V"),
-        SeplosBMSSensor("Seplos BMS - Cell Difference", data_coordinator, "CellDifference", "V"),
-        SeplosBMSSensor("Seplos BMS - Environment Temperature", data_coordinator, "EnvTemp", "°C"),
-        SeplosBMSSensor("Seplos BMS - Power Temperature", data_coordinator, "PowerTemp", "°C"),
-        SeplosBMSSensor("Seplos BMS - Current", data_coordinator, "Current", "A"),
-        SeplosBMSSensor("Seplos BMS - Voltage", data_coordinator, "Voltage", "V"),
-        SeplosBMSSensor("Seplos BMS - Capacity Remaining", data_coordinator, "CapRemain", "Ah"),
-        SeplosBMSSensor("Seplos BMS - Capacity in Wh Remaining", data_coordinator, "CapwHRemain", "Wh"),
-        SeplosBMSSensor("Seplos BMS - Total Capacity", data_coordinator, "Cap", "Ah"),
-        SeplosBMSSensor("Seplos BMS - State of Charge (SOC)", data_coordinator, "SOC", "%"),
-        SeplosBMSSensor("Seplos BMS - Total Capacity", data_coordinator, "Capacity", "Ah"),
-        SeplosBMSSensor("Seplos BMS - Number of Cycles", data_coordinator, "Cycles"),
-        SeplosBMSSensor("Seplos BMS - State of Health (SOH)", data_coordinator, "SOH", "%"),
-        SeplosBMSSensor("Seplos BMS - Port Voltage", data_coordinator, "PortV", "V"),
-        SeplosBMSSensor("Seplos BMS - Temperature 1", data_coordinator, "Temp1", "°C"),
-        SeplosBMSSensor("Seplos BMS - Temperature 2", data_coordinator, "Temp2", "°C"),
-        SeplosBMSSensor("Seplos BMS - Temperature 3", data_coordinator, "Temp3", "°C"),
-        SeplosBMSSensor("Seplos BMS - Temperature 4", data_coordinator, "Temp4", "°C"),    ]
+        SeplosBMSSensor("SeplosBMS - Number of Cells", data_coordinator, "NoCells"),
+        SeplosBMSSensor("SeplosBMS - Highest Cell Value", data_coordinator, "HighestCell", "V"),
+        SeplosBMSSensor("SeplosBMS - Lowest Cell Value", data_coordinator, "LowestCell", "V"),
+        SeplosBMSSensor("SeplosBMS - Cell Difference", data_coordinator, "CellDifference", "V"),
+        SeplosBMSSensor("SeplosBMS - Environment Temperature", data_coordinator, "EnvTemp", "°C"),
+        SeplosBMSSensor("SeplosBMS - Power Temperature", data_coordinator, "PowerTemp", "°C"),
+        SeplosBMSSensor("SeplosBMS - Current", data_coordinator, "Current", "A"),
+        SeplosBMSSensor("SeplosBMS - Voltage", data_coordinator, "Voltage", "V"),
+        SeplosBMSSensor("SeplosBMS - Capacity Remaining", data_coordinator, "CapRemain", "Ah"),
+        SeplosBMSSensor("SeplosBMS - Capacity in Wh Remaining", data_coordinator, "CapwHRemain", "Wh"),
+        SeplosBMSSensor("SeplosBMS - Total Capacity", data_coordinator, "Cap", "Ah"),
+        SeplosBMSSensor("SeplosBMS - State of Charge (SOC)", data_coordinator, "SOC", "%"),
+        SeplosBMSSensor("SeplosBMS - Total Capacity", data_coordinator, "Capacity", "Ah"),
+        SeplosBMSSensor("SeplosBMS - Number of Cycles", data_coordinator, "Cycles"),
+        SeplosBMSSensor("SeplosBMS - State of Health (SOH)", data_coordinator, "SOH", "%"),
+        SeplosBMSSensor("SeplosBMS - Port Voltage", data_coordinator, "PortV", "V"),
+        SeplosBMSSensor("SeplosBMS - Temperature 1", data_coordinator, "Temp1", "°C"),
+        SeplosBMSSensor("SeplosBMS - Temperature 2", data_coordinator, "Temp2", "°C"),
+        SeplosBMSSensor("SeplosBMS - Temperature 3", data_coordinator, "Temp3", "°C"),
+        SeplosBMSSensor("SeplosBMS - Temperature 4", data_coordinator, "Temp4", "°C"),    ]
 
     # Dynamically add cell sensors
     for i in range(1, 17):  # 16 cells
-        sensors.append(SeplosBMSSensor(f"Seplos BMS - Cell {i} Voltage", data_coordinator, f"C{i}", "V"))
+        sensors.append(SeplosBMSSensor(f"SeplosBMS - Cell {i} Voltage", data_coordinator, f"C{i}", "V"))
 
     async_add_entities(sensors, True)
