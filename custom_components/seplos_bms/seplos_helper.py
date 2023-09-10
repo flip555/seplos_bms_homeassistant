@@ -16,7 +16,7 @@ class BMSDataCoordinator:
 
     async def fetch_data(self, hass):
         async with BMSDataCoordinator._lock:  # Prevent simultaneous fetches
-            if self.last_fetch is None or time.time() - self.last_fetch > 1:  # Fetch every 10 seconds
+            if self.last_fetch is None or time.time() - self.last_fetch > 5:  # Fetch every 10 seconds
                 self.data = await hass.async_add_executor_job(SeplosHelper.fetch_data_from_bms, self.usb_port)
                 self.last_fetch = time.time()
 
